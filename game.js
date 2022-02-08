@@ -48,8 +48,8 @@ const game = {
 
     drawBoard: function () {
 
-        const rows = 10
-        const cols = 10
+        const rows = 9
+        const cols = 14
 
         let gameField = document.querySelector(".game-field");
         console.log(gameField);
