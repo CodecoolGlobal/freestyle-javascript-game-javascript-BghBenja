@@ -18,12 +18,16 @@ const game = {
         let gameField = document.querySelector(".game-field");
         console.log(gameField);
         this.setGameFieldSize(gameField, rows, cols);
-        let cellIndex = 0
         for (let row = 0; row < rows; row++) {
             const rowElement = this.addRow(gameField);
             for (let col = 0; col < cols; col++) {
-                this.addCell(rowElement, row, col);
-                cellIndex++;
+                if(row===0 || row===(rows-1) || col===0 || col===(cols-1)){
+                    this.addCell(rowElement, row, col, "wall")
+                }
+                else {
+                    this.addCell(rowElement, row, col, "field");
+                }
+                
             }
         }
     },
@@ -39,10 +43,10 @@ const game = {
         );
         return gameField.lastElementChild;
     },
-    addCell: function (rowElement, row, col) {
+    addCell: function (rowElement, row, col, type) {
         rowElement.insertAdjacentHTML(
             'beforeend',
-            `<div class="field"
+            `<div class="${type}"
                         data-row="${row}"
                         data-col="${col}"></div>`);
     },
