@@ -1,0 +1,9 @@
+body {
+    background-color: lightsteelblue;
+}
+
+.board {
+    display: grid;
+    grid-template: repeat(5, 20%) / repeat(5, 20%);
+    background-color: yellow;
+}
