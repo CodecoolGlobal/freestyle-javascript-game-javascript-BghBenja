@@ -1,9 +1,39 @@
-body {
-    background-color: lightsteelblue;
+.game-field {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.board {
-    display: grid;
-    grid-template: repeat(5, 20%) / repeat(5, 20%);
-    background-color: yellow;
+.game-field .row {
+    height: 16px;
+    display: flex;
 }
+
+.game-field .row .field {
+    height: 16px;
+    width: 16px;
+    background: sandybrown;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.game-field .row .hole {
+    height: 16px;
+    width: 16px;
+    background: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/*body {*/
+/*    background-color: lightsteelblue;*/
+/*}*/
+
+/*.board {*/
+/*    display: grid;*/
+/*    grid-template: repeat(5, 20%) / repeat(5, 20%);*/
+/*    background-color: yellow;*/
+/*}*/
