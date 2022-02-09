@@ -13,7 +13,6 @@ let level3Targets = [{row:"1", col:"1"}, {row:"1", col:"2"}, {row:"2", col:"1"},
 
 const game = {
     init: function () {
-        console.log("Valami")
         this.drawBoard();
         let myNavbar = document.querySelector(".navbar");
     },
@@ -24,8 +23,6 @@ const game = {
 
         let gameField = document.querySelector(".game-field");
         this.setGameFieldSize(gameField, rows, cols);
-
-        console.log("star board")
         for (let row = 0; row < rows; row++) {
             const rowElement = this.addRow(gameField);
             for (let col = 0; col < cols; col++) {
