@@ -104,26 +104,58 @@ myBody.addEventListener('keydown', function(event) {
         case "ArrowLeft":
             let newCol = String(Number(currentCol) - 1);
             let newCell1 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newCol}' ]`);
-            newCell1.className = "player"
-            player.className = "field";
+            console.log(newCell1.className);
+            if (newCell1.className !== 'wall') {
+                if (newCell1.className == 'box') {
+                    let newBoxCol = String(Number(newCol) - 1);
+                    let newBoxCell1 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newBoxCol}' ]`);
+                    newBoxCell1.className = "box"
+                }
+                newCell1.className = "player"
+                player.className = "field";
+            }
             break;
         case "ArrowRight":
             let newColumn = String(Number(currentCol) + 1);
             let newCell2 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newColumn}' ]`);
-            newCell2.className = "player"
-            player.className = "field";
+            let newBoxCol = String(Number(newColumn) + 1);
+            let newBoxCell2 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newBoxCol}' ]`);
+            if (newCell2.className == 'field') {
+                newCell2.className = "player"
+                player.className = "field";
+            } else if ((newCell2.className == 'box') && (newBoxCell2.className !== 'wall')) {
+                newBoxCell2.className = "box";
+                newCell2.className = "player";
+                player.className = "field";
+            } else {
+                console.log("else")
+            }
             break;
         case "ArrowUp":
             let newRow = String(Number(currentRow) - 1);
             let newCell3 = document.querySelector(`[data-row = '${newRow}' ][data-col = '${currentCol}' ]`);
-            newCell3.className = "player"
-            player.className = "field";
+            if (newCell3.className !== 'wall') {
+                if (newCell3.className == 'box') {
+                    let newBoxRow = String(Number(newRow) - 1);
+                    let newBoxCell3 = document.querySelector(`[data-row = '${newBoxRow}' ][data-col = '${currentCol}' ]`);
+                    newBoxCell3.className = "box"
+                }
+                newCell3.className = "player"
+                player.className = "field";
+            }
             break;
         case "ArrowDown":
             let new_Row = String(Number(currentRow) + 1);
             let newCell4 = document.querySelector(`[data-row = '${new_Row}' ][data-col = '${currentCol}' ]`);
-            newCell4.className = "player"
-            player.className = "field";
+            if (newCell4.className !== 'wall') {
+                if (newCell4.className == 'box') {
+                    let newBox_Row = String(Number(new_Row) + 1);
+                    let newBoxCell4 = document.querySelector(`[data-row = '${newBox_Row}' ][data-col = '${currentCol}' ]`);
+                    newBoxCell4.className = "box"
+                }
+                newCell4.className = "player"
+                player.className = "field";
+            }
             break;
     }
 });
