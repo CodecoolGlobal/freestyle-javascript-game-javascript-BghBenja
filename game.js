@@ -21,8 +21,8 @@ const game = {
 
     drawBoard: function () {
 
-        const rows = LEVEL3.length
-        const cols = LEVEL3[0].length
+        const rows = LEVEL1.length
+        const cols = LEVEL1[0].length
 
         let gameField = document.querySelector(".game-field");
         console.log(gameField);
@@ -43,7 +43,7 @@ const game = {
         for (let row = 0; row < rows; row++) {
             const rowElement = this.addRow(gameField);
             for (let col = 0; col < cols; col++) {
-                switch (LEVEL3[row][col]) {
+                switch (LEVEL1[row][col]) {
                     case 0:
                         this.addCell(rowElement, row, col, "void");
                         break;
@@ -100,78 +100,31 @@ myBody.addEventListener('keydown', function(event) {
     const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
     const currentRow = player.getAttribute("data-row")
     const currentCol = player.getAttribute("data-col")
-    console.log(currentRow)
-    console.log(currentCol)
-    console.log(key)
     switch (event.key) {
         case "ArrowLeft":
-            console.log("Left")
+            let newCol = String(Number(currentCol) - 1);
+            let newCell1 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newCol}' ]`);
+            newCell1.className = "player"
+            player.className = "field";
             break;
         case "ArrowRight":
-            console.log("Right")
+            let newColumn = String(Number(currentCol) + 1);
+            let newCell2 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newColumn}' ]`);
+            newCell2.className = "player"
+            player.className = "field";
             break;
         case "ArrowUp":
-            // Up pressed
+            let newRow = String(Number(currentRow) - 1);
+            let newCell3 = document.querySelector(`[data-row = '${newRow}' ][data-col = '${currentCol}' ]`);
+            newCell3.className = "player"
+            player.className = "field";
             break;
         case "ArrowDown":
-            // Down pressed
+            let new_Row = String(Number(currentRow) + 1);
+            let newCell4 = document.querySelector(`[data-row = '${new_Row}' ][data-col = '${currentCol}' ]`);
+            newCell4.className = "player"
+            player.className = "field";
             break;
     }
 });
-
-function movePlayer() {
-    switch (event.key) {
-        case "ArrowLeft":
-            // Left pressed
-            break;
-        case "ArrowRight":
-            // Right pressed
-            break;
-        case "ArrowUp":
-            // Up pressed
-            break;
-        case "ArrowDown":
-            // Down pressed
-            break;
-    }
-}
-
-switch (event.key) {
-    case "ArrowLeft":
-        // Left pressed
-        break;
-    case "ArrowRight":
-        // Right pressed
-        break;
-    case "ArrowUp":
-        // Up pressed
-        break;
-    case "ArrowDown":
-        // Down pressed
-        break;
-}
-
-// initGame();
-//
-// function initGame() {
-//
-//     // Your game can start here, but define separate functions, don't write everything in here :)
-//
-// }
-//
-//
-// let board = ""
-//
-// for (i = 0; i < 6; i++) {
-//     for (i = 0; i < 6; i++) {
-//         board += "<div class='grid-item' id=''></div>"
-//     }
-// }
-//
-// document.querySelector(".board").innerHTML = board
-//
-// const level1 = [[0, 0, 0, 0, 0], [0, 1, 1, 1, 0], [0, 1, 1, 1, 0], [0, 1, 1, 1, 0], [0, 0, 0, 0, 0]]
-//
-// // function createBoard() {
-// // }
 
