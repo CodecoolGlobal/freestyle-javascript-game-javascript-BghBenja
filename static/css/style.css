@@ -1,3 +1,13 @@
+body {
+    background: url('/img/Blue-Space-Wallpapers-2020.jpg');
+    color: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
 .game-field {
     margin: 0 auto;
     display: flex;
@@ -12,7 +22,7 @@
 .game-field .row .field {
     height: 16px;
     width: 16px;
-    background: sandybrown;
+    background: lightblue;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -21,7 +31,7 @@
 .game-field .row .wall {
     height: 16px;
     width: 16px;
-    background: url('/img/wall.png');
+    background: url('/img/closed-field.png');
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -30,7 +40,7 @@
 .game-field .row .void {
     height: 16px;
     width: 16px;
-    background: white;
+    background: rgba(255,255,255, 0.0);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
