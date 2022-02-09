@@ -27,6 +27,15 @@
     box-sizing: border-box;
 }
 
+.game-field .row .void {
+    height: 16px;
+    width: 16px;
+    background: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 
 /*body {*/
 /*    background-color: lightsteelblue;*/
