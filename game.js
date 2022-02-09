@@ -5,28 +5,28 @@ var LEVEL2 = [[1,1,1,1,1,1,1,1,1],[1,2,2,2,2,2,2,2,1],[1,2,2,2,1,1,2,2,1],[1,1,2
 LEVEL3 = [[1,1,1,1,1,1,0,0,1,1,1,0],[1,5,5,2,2,1,0,1,1,3,1,1],[1,5,5,2,2,1,1,1,2,2,2,1],[1,5,5,2,2,2,2,2,4,4,2,1],[1,5,5,2,2,1,2,1,2,4,2,1],[1,5,5,1,1,1,2,1,2,4,2,1],[1,1,1,1,2,4,2,1,4,2,2,1],[0,0,0,1,2,2,4,1,2,4,2,1],[0,0,0,1,2,4,2,2,4,2,2,1],[0,0,0,1,2,2,1,1,2,2,2,1],[0,0,0,1,1,1,1,1,1,1,1,1]]
 
 let level1Target = [{row:"4", col:"4"}]
+let level2Targets = [{row:"9", col:"2"}]
+let level3Targets = [{row:"1", col:"1"}, {row:"1", col:"2"}, {row:"2", col:"1"}, {row:"2", col:"2"}, {row:"3", col:"1"}, {row:"3", col:"2"}, {row:"4", col:"1"}, {row:"4", col:"2"}, {row:"5", col:"1"}, {row:"5", col:"2"}]
+
 
 
 
 const game = {
     init: function () {
-        console.log("Valami")
         this.drawBoard();
         let myNavbar = document.querySelector(".navbar");
     },
 
     drawBoard: function () {
-        const rows = LEVEL1.length
-        const cols = LEVEL1[0].length
+        const rows = LEVEL3.length
+        const cols = LEVEL3[0].length
 
         let gameField = document.querySelector(".game-field");
         this.setGameFieldSize(gameField, rows, cols);
-
-        console.log("star board")
         for (let row = 0; row < rows; row++) {
             const rowElement = this.addRow(gameField);
             for (let col = 0; col < cols; col++) {
-                switch (LEVEL1[row][col]) {
+                switch (LEVEL3[row][col]) {
                     case 0:
                         this.addCell(rowElement, row, col, "void");
                         break;
@@ -73,6 +73,7 @@ const game = {
 };
 
 game.init();
+
 
 var keypressCount = 0
 let player = document.querySelector('.player')
@@ -153,6 +154,7 @@ myBody.addEventListener('keydown', function(event) {
             }
             break;
     }
+    targetChecker()
 });
 
 let myRestartButton = document.querySelector("#restart")
@@ -163,7 +165,8 @@ myRestartButton.addEventListener("click", function(event) {
 
 
 function targetChecker (){
-    for(let element of level1Target){
+    let counter = 0
+    for(let element of level3Targets){
         let row = element.row
         let col = element.col
         let currentCell = document.querySelector(`[data-row = '${row}' ][data-col = '${col}' ]`);
@@ -172,8 +175,12 @@ function targetChecker (){
             console.log("bent van")
             currentCell.className = "target"
         }
+        if (currentCell.className == "box"){
+            counter++
+        }
     }
-
+    if (counter == level3Targets.length){
+        console.log("nyertel")
+    }
 }
 
-targetChecker()
