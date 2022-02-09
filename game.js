@@ -4,6 +4,7 @@ var LEVEL2 = [[1,1,1,1,1,1,1,1,1],[1,2,2,2,2,2,2,2,1],[1,2,2,2,1,1,2,2,1],[1,1,2
 
 LEVEL3 = [[1,1,1,1,1,1,0,0,1,1,1,0],[1,5,5,2,2,1,0,1,1,3,1,1],[1,5,5,2,2,1,1,1,2,2,2,1],[1,5,5,2,2,2,2,2,4,4,2,1],[1,5,5,2,2,1,2,1,2,4,2,1],[1,5,5,1,1,1,2,1,2,4,2,1],[1,1,1,1,2,4,2,1,4,2,2,1],[0,0,0,1,2,2,4,1,2,4,2,1],[0,0,0,1,2,4,2,2,4,2,2,1],[0,0,0,1,2,2,1,1,2,2,2,1],[0,0,0,1,1,1,1,1,1,1,1,1]]
 
+let level1Target = [{row:"4", col:"4"}]
 
 
 
@@ -12,7 +13,7 @@ const game = {
         console.log("Valami")
         this.drawBoard();
         let myNavbar = document.querySelector(".navbar");
-        console.log(myNavbar);
+        // console.log(myNavbar);
 
         // TODO: do the rest of the game setup here (eg. add event listeners)
         // this.initRightClick();
@@ -25,7 +26,7 @@ const game = {
         const cols = LEVEL1[0].length
 
         let gameField = document.querySelector(".game-field");
-        console.log(gameField);
+        // console.log(gameField);
         this.setGameFieldSize(gameField, rows, cols);
         /*for (let row = 0; row < rows; row++) {
             const rowElement = this.addRow(gameField);
@@ -64,7 +65,7 @@ const game = {
                         break;
 
                 }
-                console.log(`end cell ${row} ${col}`)
+                // console.log(`end cell ${row} ${col}`)
             }
         }
     },
@@ -104,7 +105,7 @@ myBody.addEventListener('keydown', function(event) {
         case "ArrowLeft":
             let newCol = String(Number(currentCol) - 1);
             let newCell1 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newCol}' ]`);
-            console.log(newCell1.className);
+            // console.log(newCell1.className);
             if (newCell1.className !== 'wall') {
                 if (newCell1.className == 'box') {
                     let newBoxCol = String(Number(newCol) - 1);
@@ -160,3 +161,20 @@ myBody.addEventListener('keydown', function(event) {
     }
 });
 
+
+
+function targetChecker (){
+    for(let element of level1Target){
+        let row = element.row
+        let col = element.col
+        let currentCell = document.querySelector(`[data-row = '${row}' ][data-col = '${col}' ]`);
+        console.log(currentCell)
+        if (currentCell.className == "field"){
+            console.log("bent van")
+            currentCell.className = "target"
+        }
+    }
+
+}
+
+targetChecker()
