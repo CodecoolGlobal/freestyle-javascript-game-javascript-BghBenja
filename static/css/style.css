@@ -36,6 +36,33 @@
     box-sizing: border-box;
 }
 
+.game-field .row .player {
+    height: 16px;
+    width: 16px;
+    background: red;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.game-field .row .box {
+    height: 16px;
+    width: 16px;
+    background: brown;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.game-field .row .target {
+    height: 16px;
+    width: 16px;
+    background: tan;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 
 /*body {*/
 /*    background-color: lightsteelblue;*/
