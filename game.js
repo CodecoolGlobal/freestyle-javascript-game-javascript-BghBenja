@@ -15,8 +15,8 @@ const game = {
         console.log(myNavbar);
 
         // TODO: do the rest of the game setup here (eg. add event listeners)
-        this.initRightClick();
-        this.initLeftClick();
+        // this.initRightClick();
+        // this.initLeftClick();
     },
 
     drawBoard: function () {
@@ -91,6 +91,65 @@ const game = {
 };
 
 game.init();
+
+
+let player = document.querySelector('.player')
+let myBody = document.querySelector('body')
+myBody.addEventListener('keydown', function(event) {
+    let player = document.querySelector('.player')
+    const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
+    const currentRow = player.getAttribute("data-row")
+    const currentCol = player.getAttribute("data-col")
+    console.log(currentRow)
+    console.log(currentCol)
+    console.log(key)
+    switch (event.key) {
+        case "ArrowLeft":
+            console.log("Left")
+            break;
+        case "ArrowRight":
+            console.log("Right")
+            break;
+        case "ArrowUp":
+            // Up pressed
+            break;
+        case "ArrowDown":
+            // Down pressed
+            break;
+    }
+});
+
+function movePlayer() {
+    switch (event.key) {
+        case "ArrowLeft":
+            // Left pressed
+            break;
+        case "ArrowRight":
+            // Right pressed
+            break;
+        case "ArrowUp":
+            // Up pressed
+            break;
+        case "ArrowDown":
+            // Down pressed
+            break;
+    }
+}
+
+switch (event.key) {
+    case "ArrowLeft":
+        // Left pressed
+        break;
+    case "ArrowRight":
+        // Right pressed
+        break;
+    case "ArrowUp":
+        // Up pressed
+        break;
+    case "ArrowDown":
+        // Down pressed
+        break;
+}
 
 // initGame();
 //
