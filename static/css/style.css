@@ -7,21 +7,22 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-
-.navbar {
-    text-align: center;
-    background-color: blue;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    padding: 10px;
 }
 
+/*.navbar {*/
+/*    text-align: center;*/
+/*    background-color: blue;*/
+/*    border-top-left-radius: 20px;*/
+/*    border-top-right-radius: 20px;*/
+/*    padding: 10px;*/
+/*}*/
 
-.back {
-    border-end-start-radius: 50px;
-    border-end-end-radius: 50px;
-    background-color: black;
-}
+
+/*.back {*/
+/*    border-end-start-radius: 50px;*/
+/*    border-end-end-radius: 50px;*/
+/*    background-color: black;*/
+/*}*/
 
 .game-field {
     padding: 10px;
@@ -60,7 +61,7 @@ body {
     height: 16px;
     width: 16px;
 
-    background: rgba(255,255,255, 0.0);
+    background: transparent;
 
     margin: 0;
     padding: 0;
