@@ -10,10 +10,6 @@ body {
     background-color: lightgray;
 }
 
-button {
-    border-radius: 10px;
-}
-
 .back {
     border-end-start-radius: 50px;
     border-end-end-radius: 50px;
@@ -45,7 +41,7 @@ button {
 .game-field .row .wall {
     height: 16px;
     width: 16px;
-    background: gray;
+    background: url('/img/wall.png');
     margin: 0;
     padding: 0;
     box-sizing: border-box;
