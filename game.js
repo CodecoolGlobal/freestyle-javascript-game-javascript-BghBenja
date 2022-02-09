@@ -13,33 +13,15 @@ const game = {
         console.log("Valami")
         this.drawBoard();
         let myNavbar = document.querySelector(".navbar");
-        // console.log(myNavbar);
-
-        // TODO: do the rest of the game setup here (eg. add event listeners)
-        // this.initRightClick();
-        // this.initLeftClick();
     },
 
     drawBoard: function () {
-
         const rows = LEVEL1.length
         const cols = LEVEL1[0].length
 
         let gameField = document.querySelector(".game-field");
-        // console.log(gameField);
         this.setGameFieldSize(gameField, rows, cols);
-        /*for (let row = 0; row < rows; row++) {
-            const rowElement = this.addRow(gameField);
-            for (let col = 0; col < cols; col++) {
-                if(row===0 || row===(rows-1) || col===0 || col===(cols-1)) {
-                    this.addCell(rowElement, row, col, "wall")
-                }
-                else {
-                    this.addCell(rowElement, row, col, "field");
-                }
-                
-            }
-        }*/
+
         console.log("star board")
         for (let row = 0; row < rows; row++) {
             const rowElement = this.addRow(gameField);
@@ -65,7 +47,6 @@ const game = {
                         break;
 
                 }
-                // console.log(`end cell ${row} ${col}`)
             }
         }
     },
@@ -93,35 +74,42 @@ const game = {
 
 game.init();
 
-
+var keypressCount = 0
 let player = document.querySelector('.player')
 let myBody = document.querySelector('body')
+
 myBody.addEventListener('keydown', function(event) {
+    keypressCount++
+    let myKeypressCounter = document.querySelector('.keypressCounter')
+    myKeypressCounter.innerHTML = `Number of your moves: ${keypressCount}`
     let player = document.querySelector('.player')
     const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
     const currentRow = player.getAttribute("data-row")
     const currentCol = player.getAttribute("data-col")
     switch (event.key) {
         case "ArrowLeft":
+            console.log(keypressCount)
             let newCol = String(Number(currentCol) - 1);
             let newCell1 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newCol}' ]`);
-            // console.log(newCell1.className);
-            if (newCell1.className !== 'wall') {
-                if (newCell1.className == 'box') {
-                    let newBoxCol = String(Number(newCol) - 1);
-                    let newBoxCell1 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newBoxCol}' ]`);
-                    newBoxCell1.className = "box"
-                }
+            let newBoxCol1 = String(Number(newCol) - 1);
+            let newBoxCell1 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newBoxCol1}' ]`);
+            if (newCell1.className == 'field' || newCell1.className == 'target') {
                 newCell1.className = "player"
                 player.className = "field";
+            } else if ((newCell1.className == 'box') && (newBoxCell1.className !== 'wall')) {
+                newBoxCell1.className = "box";
+                newCell1.className = "player";
+                player.className = "field";
+            } else {
+                console.log("else")
             }
             break;
         case "ArrowRight":
             let newColumn = String(Number(currentCol) + 1);
             let newCell2 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newColumn}' ]`);
-            let newBoxCol = String(Number(newColumn) + 1);
-            let newBoxCell2 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newBoxCol}' ]`);
-            if (newCell2.className == 'field') {
+            let newBoxCol2 = String(Number(newColumn) + 1);
+            let newBoxCell2 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newBoxCol2}' ]`);
+            if (newCell2.className == 'field' || newCell2.className == 'target') {
                 newCell2.className = "player"
                 player.className = "field";
             } else if ((newCell2.className == 'box') && (newBoxCell2.className !== 'wall')) {
@@ -135,31 +123,42 @@ myBody.addEventListener('keydown', function(event) {
         case "ArrowUp":
             let newRow = String(Number(currentRow) - 1);
             let newCell3 = document.querySelector(`[data-row = '${newRow}' ][data-col = '${currentCol}' ]`);
-            if (newCell3.className !== 'wall') {
-                if (newCell3.className == 'box') {
-                    let newBoxRow = String(Number(newRow) - 1);
-                    let newBoxCell3 = document.querySelector(`[data-row = '${newBoxRow}' ][data-col = '${currentCol}' ]`);
-                    newBoxCell3.className = "box"
-                }
+            let newBoxRow = String(Number(newRow) - 1);
+            let newBoxCell3 = document.querySelector(`[data-row = '${newBoxRow}' ][data-col = '${currentCol}' ]`);
+            if (newCell3.className == 'field' || newCell3.className == 'target') {
                 newCell3.className = "player"
                 player.className = "field";
+            } else if ((newCell3.className == 'box') && (newBoxCell3.className !== 'wall')) {
+                newBoxCell3.className = "box";
+                newCell3.className = "player";
+                player.className = "field";
+            } else {
+                console.log("else")
             }
             break;
         case "ArrowDown":
             let new_Row = String(Number(currentRow) + 1);
             let newCell4 = document.querySelector(`[data-row = '${new_Row}' ][data-col = '${currentCol}' ]`);
-            if (newCell4.className !== 'wall') {
-                if (newCell4.className == 'box') {
-                    let newBox_Row = String(Number(new_Row) + 1);
-                    let newBoxCell4 = document.querySelector(`[data-row = '${newBox_Row}' ][data-col = '${currentCol}' ]`);
-                    newBoxCell4.className = "box"
-                }
+            let newBox_Row = String(Number(new_Row) + 1);
+            let newBoxCell4 = document.querySelector(`[data-row = '${newBox_Row}' ][data-col = '${currentCol}' ]`);
+            if (newCell4.className == 'field' || newCell4.className == 'target') {
                 newCell4.className = "player"
                 player.className = "field";
+            } else if ((newCell4.className == 'box') && (newBoxCell4.className !== 'wall')) {
+                newBoxCell4.className = "box";
+                newCell4.className = "player";
+                player.className = "field";
+            } else {
+                console.log("else")
             }
             break;
     }
 });
+
+let myRestartButton = document.querySelector("#restart")
+myRestartButton.addEventListener("click", function(event) {
+    location.reload()
+} );
 
 
 
