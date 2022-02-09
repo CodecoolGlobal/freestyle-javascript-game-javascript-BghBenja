@@ -1,5 +1,28 @@
+.navbar {
+    text-align: center;
+    background-color: blue;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 10px;
+}
+
+body {
+    background-color: lightgray;
+}
+
+button {
+    border-radius: 10px;
+}
+
+.back {
+    border-end-start-radius: 50px;
+    border-end-end-radius: 50px;
+    background-color: black;
+}
+
 .game-field {
-    margin: 0 auto;
+    padding: 10px;
+    margin: 10 auto;
     display: flex;
     flex-direction: column;
 }
@@ -7,6 +30,7 @@
 .game-field .row {
     height: 16px;
     display: flex;
+    justify-content: center;
 }
 
 .game-field .row .field {
@@ -21,7 +45,7 @@
 .game-field .row .wall {
     height: 16px;
     width: 16px;
-    background: black;
+    background: gray;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -30,7 +54,7 @@
 .game-field .row .void {
     height: 16px;
     width: 16px;
-    background: white;
+    background: black;
     margin: 0;
     padding: 0;
     box-sizing: border-box;

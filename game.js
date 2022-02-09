@@ -9,14 +9,8 @@ LEVEL3 = [[1,1,1,1,1,1,0,0,1,1,1,0],[1,5,5,2,2,1,0,1,1,3,1,1],[1,5,5,2,2,1,1,1,2
 
 const game = {
     init: function () {
-        console.log("Valami")
         this.drawBoard();
         let myNavbar = document.querySelector(".navbar");
-        console.log(myNavbar);
-
-        // TODO: do the rest of the game setup here (eg. add event listeners)
-        // this.initRightClick();
-        // this.initLeftClick();
     },
 
     drawBoard: function () {
@@ -27,19 +21,6 @@ const game = {
         let gameField = document.querySelector(".game-field");
         console.log(gameField);
         this.setGameFieldSize(gameField, rows, cols);
-        /*for (let row = 0; row < rows; row++) {
-            const rowElement = this.addRow(gameField);
-            for (let col = 0; col < cols; col++) {
-                if(row===0 || row===(rows-1) || col===0 || col===(cols-1)) {
-                    this.addCell(rowElement, row, col, "wall")
-                }
-                else {
-                    this.addCell(rowElement, row, col, "field");
-                }
-                
-            }
-        }*/
-        console.log("star board")
         for (let row = 0; row < rows; row++) {
             const rowElement = this.addRow(gameField);
             for (let col = 0; col < cols; col++) {
@@ -64,7 +45,6 @@ const game = {
                         break;
 
                 }
-                console.log(`end cell ${row} ${col}`)
             }
         }
     },
