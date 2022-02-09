@@ -1,6 +1,8 @@
 
 body {
     background: url('/img/Blue-Space-Wallpapers-2020.jpg');
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
     color: white;
     display: flex;
     flex-direction: column;
@@ -8,6 +10,40 @@ body {
     justify-content: center;
     align-content: center;
 }
+
+
+.button-restart {
+  background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 3rem;
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-restart:hover {
+  box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+  transition-duration: .1s;
+}
+
+@media (min-width: 768px) {
+  .button-restart {
+    padding: 0 2.6rem;
+  }
+}
+
 
 /*.navbar {*/
 /*    text-align: center;*/
@@ -32,14 +68,14 @@ body {
 }
 
 .game-field .row {
-    height: 16px;
+    height: 40px;
     display: flex;
     justify-content: center;
 }
 
 .game-field .row .field {
-    height: 16px;
-    width: 16px;
+    height: 40px;
+    width: 40px;
     background: lightblue;
     margin: 0;
     padding: 0;
@@ -47,10 +83,10 @@ body {
 }
 
 .game-field .row .wall {
-    height: 16px;
-    width: 16px;
+    height: 40px;
+    width: 40px;
 
-    background: url('/img/closed-field.png');
+    background: url('/img/walltile.png');
 
     margin: 0;
     padding: 0;
@@ -58,8 +94,8 @@ body {
 }
 
 .game-field .row .void {
-    height: 16px;
-    width: 16px;
+    height: 40px;
+    width: 40px;
 
     background: transparent;
 
@@ -69,27 +105,27 @@ body {
 }
 
 .game-field .row .player {
-    height: 16px;
-    width: 16px;
-    background: red;
+    height: 40px;
+    width: 40px;
+    background: url('/img/doge.png');
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 .game-field .row .box {
-    height: 16px;
-    width: 16px;
-    background: brown;
+    height: 40px;
+    width: 40px;
+    background: url('/img/box.png');
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 .game-field .row .target {
-    height: 16px;
-    width: 16px;
-    background: tan;
+    height: 40px;
+    width: 40px;
+    background: url('/img/target.png');
     margin: 0;
     padding: 0;
     box-sizing: border-box;

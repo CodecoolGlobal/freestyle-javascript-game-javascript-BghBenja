@@ -157,7 +157,8 @@ myBody.addEventListener('keydown', function(event) {
     targetChecker()
 });
 
-let myRestartButton = document.querySelector("#restart")
+
+let myRestartButton = document.querySelector(".button-restart")
 myRestartButton.addEventListener("click", function(event) {
     location.reload()
 } );
