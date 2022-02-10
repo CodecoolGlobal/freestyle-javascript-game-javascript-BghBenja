@@ -74,6 +74,19 @@ const game = {
 
 game.init();
 
+function movement(player, newCell, newBoxCell) {
+    if (newCell.className == 'field' || newCell.className == 'target') {
+                newCell.className = "player"
+                player.className = "field";
+            } else if ((newCell.className == 'box') && (newBoxCell.className !== 'wall') && (newBoxCell.className !== 'box')) {
+                newBoxCell.className = "box";
+                newCell.className = "player";
+                player.className = "field";
+            } else {
+                console.log("else")
+            }
+}
+
 
 var keypressCount = 0
 let player = document.querySelector('.player')
@@ -94,64 +107,28 @@ myBody.addEventListener('keydown', function(event) {
             let newCell1 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newCol}' ]`);
             let newBoxCol1 = String(Number(newCol) - 1);
             let newBoxCell1 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newBoxCol1}' ]`);
-            if (newCell1.className == 'field' || newCell1.className == 'target') {
-                newCell1.className = "player"
-                player.className = "field";
-            } else if ((newCell1.className == 'box') && (newBoxCell1.className !== 'wall') && (newBoxCell1.className !== 'box')) {
-                newBoxCell1.className = "box";
-                newCell1.className = "player";
-                player.className = "field";
-            } else {
-                console.log("else")
-            }
+            movement(player, newCell1, newBoxCell1)
             break;
         case "ArrowRight":
             let newColumn = String(Number(currentCol) + 1);
             let newCell2 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newColumn}' ]`);
             let newBoxCol2 = String(Number(newColumn) + 1);
             let newBoxCell2 = document.querySelector(`[data-row = '${currentRow}' ][data-col = '${newBoxCol2}' ]`);
-            if (newCell2.className == 'field' || newCell2.className == 'target') {
-                newCell2.className = "player"
-                player.className = "field";
-            } else if ((newCell2.className == 'box') && (newBoxCell2.className !== 'wall')  && (newBoxCell2.className !== 'box')) {
-                newBoxCell2.className = "box";
-                newCell2.className = "player";
-                player.className = "field";
-            } else {
-                console.log("else")
-            }
+            movement(player, newCell2, newBoxCell2)
             break;
         case "ArrowUp":
             let newRow = String(Number(currentRow) - 1);
             let newCell3 = document.querySelector(`[data-row = '${newRow}' ][data-col = '${currentCol}' ]`);
             let newBoxRow = String(Number(newRow) - 1);
             let newBoxCell3 = document.querySelector(`[data-row = '${newBoxRow}' ][data-col = '${currentCol}' ]`);
-            if (newCell3.className == 'field' || newCell3.className == 'target') {
-                newCell3.className = "player"
-                player.className = "field";
-            } else if ((newCell3.className == 'box') && (newBoxCell3.className !== 'wall') && (newBoxCell3.className !== 'box')) {
-                newBoxCell3.className = "box";
-                newCell3.className = "player";
-                player.className = "field";
-            } else {
-                console.log("else")
-            }
+            movement(player, newCell3, newBoxCell3)
             break;
         case "ArrowDown":
             let new_Row = String(Number(currentRow) + 1);
             let newCell4 = document.querySelector(`[data-row = '${new_Row}' ][data-col = '${currentCol}' ]`);
             let newBox_Row = String(Number(new_Row) + 1);
             let newBoxCell4 = document.querySelector(`[data-row = '${newBox_Row}' ][data-col = '${currentCol}' ]`);
-            if (newCell4.className == 'field' || newCell4.className == 'target') {
-                newCell4.className = "player"
-                player.className = "field";
-            } else if ((newCell4.className == 'box') && (newBoxCell4.className !== 'wall') && (newBoxCell4.className !== 'box')) {
-                newBoxCell4.className = "box";
-                newCell4.className = "player";
-                player.className = "field";
-            } else {
-                console.log("else")
-            }
+            movement(player, newCell4, newBoxCell4)
             break;
     }
     targetChecker()
