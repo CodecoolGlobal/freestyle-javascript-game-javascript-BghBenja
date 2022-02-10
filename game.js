@@ -90,6 +90,7 @@ const game = {
 
 let highscore1 = localStorage.getItem("highscore1");
 document.querySelector(".highscore").innerHTML = `Your highscore on this level: ${highscore1}`;
+document.querySelector('.title').innerHTML = `DogeMan - Level ${actualLevel}`
 game.init(LEVEL1);
 
 
@@ -164,6 +165,7 @@ myBody.addEventListener('keydown', function(event) {
 let myRestartButton = document.querySelector(".button-restart")
 myRestartButton.addEventListener("click", function(event) {
     keypressCount = 0;
+    document.querySelector('.title').innerHTML = `DogeMan - Level ${actualLevel}`;
     let myKeypressCounter = document.querySelector('.keypressCounter');
     myKeypressCounter.innerHTML = `Number of your moves: ${keypressCount}`
     if (actualLevel == 1) {
@@ -210,6 +212,7 @@ function finishingLevel() {
     if (confirm("Proceed to the next level")) {
         if (actualLevel == 1) {
             actualLevel++
+            document.querySelector('.title').innerHTML = `DogeMan - Level ${actualLevel}`;
             let myBoard = document.querySelector(".game-field")
             myBoard.innerHTML = ""
             keypressCount = 0
@@ -220,6 +223,7 @@ function finishingLevel() {
             game.init(LEVEL2)
         } else if (actualLevel == 2) {
             actualLevel++
+            document.querySelector('.title').innerHTML = `DogeMan - Level ${actualLevel}`;
             let myBoard = document.querySelector(".game-field")
             myBoard.innerHTML = ""
             keypressCount = 0
