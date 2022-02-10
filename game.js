@@ -199,7 +199,7 @@ function targetChecker (targets){
         setLocalStorage();
         if (actualLevel == 3) {
             setTimeout(() => alert("You Won!!!"), 500);
-            location.reload();
+            setTimeout(function(){location.reload()}, 1500);
         } else {
             setTimeout(() => finishingLevel(), 500)
         }
