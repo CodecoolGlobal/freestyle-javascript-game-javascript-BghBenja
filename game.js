@@ -97,7 +97,7 @@ myBody.addEventListener('keydown', function(event) {
             if (newCell1.className == 'field' || newCell1.className == 'target') {
                 newCell1.className = "player"
                 player.className = "field";
-            } else if ((newCell1.className == 'box') && (newBoxCell1.className !== 'wall')) {
+            } else if ((newCell1.className == 'box') && (newBoxCell1.className !== 'wall') && (newBoxCell1.className !== 'box')) {
                 newBoxCell1.className = "box";
                 newCell1.className = "player";
                 player.className = "field";
@@ -113,7 +113,7 @@ myBody.addEventListener('keydown', function(event) {
             if (newCell2.className == 'field' || newCell2.className == 'target') {
                 newCell2.className = "player"
                 player.className = "field";
-            } else if ((newCell2.className == 'box') && (newBoxCell2.className !== 'wall')) {
+            } else if ((newCell2.className == 'box') && (newBoxCell2.className !== 'wall')  && (newBoxCell2.className !== 'box')) {
                 newBoxCell2.className = "box";
                 newCell2.className = "player";
                 player.className = "field";
@@ -129,7 +129,7 @@ myBody.addEventListener('keydown', function(event) {
             if (newCell3.className == 'field' || newCell3.className == 'target') {
                 newCell3.className = "player"
                 player.className = "field";
-            } else if ((newCell3.className == 'box') && (newBoxCell3.className !== 'wall')) {
+            } else if ((newCell3.className == 'box') && (newBoxCell3.className !== 'wall') && (newBoxCell3.className !== 'box')) {
                 newBoxCell3.className = "box";
                 newCell3.className = "player";
                 player.className = "field";
@@ -145,7 +145,7 @@ myBody.addEventListener('keydown', function(event) {
             if (newCell4.className == 'field' || newCell4.className == 'target') {
                 newCell4.className = "player"
                 player.className = "field";
-            } else if ((newCell4.className == 'box') && (newBoxCell4.className !== 'wall')) {
+            } else if ((newCell4.className == 'box') && (newBoxCell4.className !== 'wall') && (newBoxCell4.className !== 'box')) {
                 newBoxCell4.className = "box";
                 newCell4.className = "player";
                 player.className = "field";
