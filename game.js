@@ -92,6 +92,7 @@ let highscore1 = localStorage.getItem("highscore1");
 document.querySelector(".highscore").innerHTML = `Your highscore on this level: ${highscore1}`;
 game.init(LEVEL1);
 
+
 function movement(player, newCell, newBoxCell) {
     if (newCell.className == 'field' || newCell.className == 'target') {
                 newCell.className = "player"
@@ -157,12 +158,14 @@ myBody.addEventListener('keydown', function(event) {
     } else {
         targetChecker(level3Targets)
     }
-
 });
 
 
 let myRestartButton = document.querySelector(".button-restart")
 myRestartButton.addEventListener("click", function(event) {
+    keypressCount = 0;
+    let myKeypressCounter = document.querySelector('.keypressCounter');
+    myKeypressCounter.innerHTML = `Number of your moves: ${keypressCount}`
     if (actualLevel == 1) {
         let myBoard = document.querySelector(".game-field")
         myBoard.innerHTML = ""
@@ -177,7 +180,6 @@ myRestartButton.addEventListener("click", function(event) {
         game.init(LEVEL3);
     }
 } );
-
 
 
 function targetChecker (targets){
@@ -195,18 +197,18 @@ function targetChecker (targets){
     }
     if (counter == targets.length){
         setLocalStorage();
-        setTimeout(() => finishingLevel(), 500)
+        if (actualLevel == 3) {
+            setTimeout(() => alert("You Won!!!"), 500);
+            location.reload();
+        } else {
+            setTimeout(() => finishingLevel(), 500)
+        }
     }
 }
 
 function finishingLevel() {
     if (confirm("Proceed to the next level")) {
         if (actualLevel == 1) {
-            let allTimeHighscore1 = localStorage.getItem("highscore1");
-            if (keypressCount < Number(allTimeHighscore1) || allTimeHighscore1 == "Doesn't exist, yet!") {
-                localStorage.setItem("highscore1", keypressCount)
-            }
-            document.querySelector(".highscore").innerHTML = `Highscore on this level: ${keypressCount}`
             actualLevel++
             let myBoard = document.querySelector(".game-field")
             myBoard.innerHTML = ""
@@ -232,7 +234,22 @@ function finishingLevel() {
             alert("You won!")
         }
     } else {
-        location.reload();
+        keypressCount = 0;
+        let myKeypressCounter = document.querySelector('.keypressCounter');
+        myKeypressCounter.innerHTML = `Number of your moves: ${keypressCount}`;
+        if (actualLevel == 1) {
+            let myBoard = document.querySelector(".game-field")
+            myBoard.innerHTML = ""
+            game.init(LEVEL1);
+        } else if (actualLevel == 2) {
+            let myBoard = document.querySelector(".game-field")
+            myBoard.innerHTML = ""
+            game.init(LEVEL2);
+        } else {
+            let myBoard = document.querySelector(".game-field")
+            myBoard.innerHTML = ""
+            game.init(LEVEL3);
+        }
     }
 };
 
@@ -241,24 +258,23 @@ function setLocalStorage() {
         let allTimeHighscore1 = localStorage.getItem("highscore1");
         if (keypressCount < Number(allTimeHighscore1) || allTimeHighscore1 == "Doesn't exist, yet!") {
             localStorage.setItem("highscore1", keypressCount);
+            document.querySelector(".highscore").innerHTML = `Highscore on this level: ${keypressCount}`
             setTimeout(() => alert("New Highscore!"), 500)
         }
-        document.querySelector(".highscore").innerHTML = `Highscore on this level: ${keypressCount}`
-
     } else if (actualLevel == 2) {
         let allTimeHighscore2 = localStorage.getItem("highscore2");
         if (keypressCount < Number(allTimeHighscore2) || allTimeHighscore2 == "Doesn't exist, yet!") {
             localStorage.setItem("highscore2", keypressCount);
+            document.querySelector(".highscore").innerHTML = `Highscore on this level: ${keypressCount}`
             setTimeout(() => alert("New Highscore!"), 500);
         }
-        document.querySelector(".highscore").innerHTML = `Highscore on this level: ${keypressCount}`
     } else if (actualLevel == 3) {
         let allTimeHighscore3 = localStorage.getItem("highscore3");
         if (keypressCount < Number(allTimeHighscore3) || allTimeHighscore3 == "Doesn't exist, yet!") {
             localStorage.setItem("highscore3", keypressCount);
+            document.querySelector(".highscore").innerHTML = `Highscore on this level: ${keypressCount}`
             setTimeout(() => alert("New Highscore!"), 500)
         }
-        document.querySelector(".highscore").innerHTML = `Highscore on this level: ${keypressCount}`
     }
     ;
 }
