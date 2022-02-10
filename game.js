@@ -4,7 +4,7 @@ var LEVEL2 = [[1,1,1,1,1,1,1,1,1],[1,2,2,2,2,2,2,2,1],[1,2,2,2,1,1,2,2,1],[1,1,2
 
 LEVEL3 = [[1,1,1,1,1,1,0,0,1,1,1,0],[1,5,5,2,2,1,0,1,1,3,1,1],[1,5,5,2,2,1,1,1,2,2,2,1],[1,5,5,2,2,2,2,2,4,4,2,1],[1,5,5,2,2,1,2,1,2,4,2,1],[1,5,5,1,1,1,2,1,2,4,2,1],[1,1,1,1,2,4,2,1,4,2,2,1],[0,0,0,1,2,2,4,1,2,4,2,1],[0,0,0,1,2,4,2,2,4,2,2,1],[0,0,0,1,2,2,1,1,2,2,2,1],[0,0,0,1,1,1,1,1,1,1,1,1]]
 
-let level1Target = [{row:"4", col:"4"}]
+let level1Targets = [{row:"4", col:"4"}]
 let level2Targets = [{row:"9", col:"2"}]
 let level3Targets = [{row:"1", col:"1"}, {row:"1", col:"2"}, {row:"2", col:"1"}, {row:"2", col:"2"}, {row:"3", col:"1"}, {row:"3", col:"2"}, {row:"4", col:"1"}, {row:"4", col:"2"}, {row:"5", col:"1"}, {row:"5", col:"2"}]
 
@@ -18,15 +18,15 @@ const game = {
     },
 
     drawBoard: function () {
-        const rows = LEVEL3.length
-        const cols = LEVEL3[0].length
+        const rows = LEVEL1.length
+        const cols = LEVEL1[0].length
 
         let gameField = document.querySelector(".game-field");
         this.setGameFieldSize(gameField, rows, cols);
         for (let row = 0; row < rows; row++) {
             const rowElement = this.addRow(gameField);
             for (let col = 0; col < cols; col++) {
-                switch (LEVEL3[row][col]) {
+                switch (LEVEL1[row][col]) {
                     case 0:
                         this.addCell(rowElement, row, col, "void");
                         break;
@@ -144,7 +144,7 @@ myRestartButton.addEventListener("click", function(event) {
 
 function targetChecker (){
     let counter = 0
-    for(let element of level3Targets){
+    for(let element of level1Targets){
         let row = element.row
         let col = element.col
         let currentCell = document.querySelector(`[data-row = '${row}' ][data-col = '${col}' ]`);
@@ -157,8 +157,25 @@ function targetChecker (){
             counter++
         }
     }
-    if (counter == level3Targets.length){
-        console.log("nyertel")
+    if (counter == level1Targets.length){
+        winner()
     }
 }
+
+function winner () {
+        let counter = 0;
+        for(let element of level1Targets){
+        let row = element.row
+        let col = element.col
+        let currentCell = document.querySelector(`[data-row = '${row}' ][data-col = '${col}' ]`);
+        console.log(currentCell)
+        if (currentCell.className == "box") {
+            counter++
+        }
+        if (counter == level1Targets.length){
+        console.log("nyertel")
+        alert("YESSSSS")
+        }
+    }
+};
 
